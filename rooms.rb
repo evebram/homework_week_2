@@ -1,11 +1,13 @@
 class Rooms
 
-  attr_reader :name, :capacity
+  attr_reader :name, :capacity, :till, :entry_fee
 
-  def initialize(name, capacity, occupants)
+  def initialize(name, capacity, occupants, till, entry_fee)
     @name = name
     @capacity = capacity
     @occupants = occupants
+    @till = till
+    @entry_fee = entry_fee
     @playlist = []
   end
 
@@ -15,6 +17,11 @@ class Rooms
 
   def check_into_room(guest)
     @occupants << guest
+  end
+
+  def check_multiple_guests_into_room(guests)
+    @occupants += guests
+  #  return @occupants
   end
 
   def check_out_of_room(guest)
@@ -35,7 +42,7 @@ class Rooms
   #     end
   #   end
 
- def check_for_space_in_room(guest, capacity)
+ def check_for_one_space_in_room(guest, capacity)
    # for space in @occupants
    #   if space < capacity
      if @occupants.count < capacity
@@ -43,6 +50,16 @@ class Rooms
      else
        return false
    end
+  end
+
+  def space_for_multiple_guests(guests, capacity)
+    space = capacity - @occupants.count
+     if space >= capacity
+       check_multiple_guests_into_room(guests)
+       #return @occupants.count
+     else
+       return false
+     end
   end
 
 
