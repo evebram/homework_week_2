@@ -17,5 +17,5 @@ class Guests
       @cash -= entry_fee
     end
   end
-
+  
 end

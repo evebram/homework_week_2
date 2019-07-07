@@ -36,17 +36,18 @@ class Rooms
     @playlist << song
   end
 
-  # def check_for_space_in_room(guest, capacity)
-  #     if @occupants.count <= capacity
-  #       @occupants << guest
-  #     end
-  #   end
+  def check_for_space_in_room(guest, capacity)
+      if @occupants.count <= capacity
+        @occupants << guest
+      end
+    end
 
  def check_for_one_space_in_room(guest, capacity)
    # for space in @occupants
    #   if space < capacity
      if @occupants.count < capacity
        check_into_room(guest)
+       return true
      else
        return false
    end
@@ -56,12 +57,19 @@ class Rooms
     space = capacity - @occupants.count
      if space >= capacity
        check_multiple_guests_into_room(guests)
+       return true
        #return @occupants.count
      else
        return false
      end
   end
 
-
+  def guest_pay_entry_fee(guest, entry_fee)
+    if check_for_one_space_in_room(@guest1, @capacity) == true
+      guest.pay_entry_fee(entry_fee)
+      @till += entry_fee
+      check_into_room(@guest1)
+    end
+  end
 
 end

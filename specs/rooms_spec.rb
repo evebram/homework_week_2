@@ -1,7 +1,7 @@
 require('minitest/autorun')
 require('minitest/rg')
-require_relative('../rooms.rb')
 require_relative('../guests.rb')
+require_relative('../rooms.rb')
 require_relative('../songs.rb')
 
 class RoomsTest < MiniTest::Test
@@ -83,16 +83,21 @@ class RoomsTest < MiniTest::Test
     assert_equal(false, @room2.check_for_one_space_in_room(@guest4, @room2.capacity))
   end
 
-  # def test_add_mulitple_guests__yes()
-  #   @room1.space_for_multiple_guests(@new_arrivals, @room1.capacity)
-  #   assert_equal(6, @room1.count_guests())
-  # end
+  def test_add_mulitple_guests__yes()
+    @room1.space_for_multiple_guests(@new_arrivals, @room1.capacity)
+    assert_equal(6, @room1.count_guests())
+  end
 
   def test_add_mulitple_guests__no()
     assert_equal(false, @room3.space_for_multiple_guests(@new_arrivals, @room3.capacity))
   end
 
-
+  def test_guest_pay_entry_fee()
+    @room3.guest_pay_entry_fee(@guest1, @room3.entry_fee)
+    assert_equal(6, @guest1.cash)
+    assert_equal(3, @room3.till)
+    assert_equal(4, @room3.count_guests())
+  end
 
   # def test_thats_my_jam()
   #
