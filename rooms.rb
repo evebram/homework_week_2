@@ -72,4 +72,13 @@ class Rooms
     end
   end
 
+  def thats_my_jam(fave_song, song)
+    add_song_to_playlist(song)
+    if @playlist.find { |songs| songs == fave_song}
+      return "That's my JAM!"
+    else
+      return false
+    end
+  end
+
 end

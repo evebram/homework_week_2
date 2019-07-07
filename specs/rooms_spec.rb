@@ -99,8 +99,12 @@ class RoomsTest < MiniTest::Test
     assert_equal(4, @room3.count_guests())
   end
 
-  # def test_thats_my_jam()
-  #
-  # end
+  def test_thats_my_jam()
+    assert_equal("That's my JAM!", @room1.thats_my_jam(@guest1.song, @song1))
+  end
+
+  def test_thats_not_my_jam()
+    assert_equal(false, @room1.thats_my_jam(@guest2.song, @song1))
+  end
 
 end
