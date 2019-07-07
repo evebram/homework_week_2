@@ -29,12 +29,22 @@ class Rooms
     @playlist << song
   end
 
-  def check_for_space_in_room(capacity)
-      if @occupants <= capacity
-        return true
-      else
-        return false
-      end
-    end
+  # def check_for_space_in_room(guest, capacity)
+  #     if @occupants.count <= capacity
+  #       @occupants << guest
+  #     end
+  #   end
+
+ def check_for_space_in_room(guest, capacity)
+   # for space in @occupants
+   #   if space < capacity
+     if @occupants.count < capacity
+       check_into_room(guest)
+     else
+       return false
+   end
+  end
+
+
 
 end
