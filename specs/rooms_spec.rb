@@ -84,8 +84,8 @@ class RoomsTest < MiniTest::Test
   end
 
   def test_add_mulitple_guests__yes()
-    @room1.space_for_multiple_guests(@new_arrivals, @room1.capacity)
-    assert_equal(6, @room1.count_guests())
+    #@room1.space_for_multiple_guests(@new_arrivals, @room1.capacity)
+    assert_equal(6, @room1.space_for_multiple_guests(@new_arrivals, @room1.capacity))
   end
 
   def test_add_mulitple_guests__no()

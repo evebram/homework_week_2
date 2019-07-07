@@ -65,10 +65,10 @@ class Rooms
   end
 
   def guest_pay_entry_fee(guest, entry_fee)
-    if check_for_one_space_in_room(@guest1, @capacity) == true
+    if check_for_one_space_in_room(guest, @capacity) == true
       guest.pay_entry_fee(entry_fee)
       @till += entry_fee
-      check_into_room(@guest1)
+      check_into_room(guest)
     end
   end
 
